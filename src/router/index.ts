@@ -1,11 +1,20 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Landing from "@/pages/Landing.vue";
+import { createRouter, createWebHistory } from 'vue-router';
 
-const routes = [{ path: "/", component: Landing }];
+import WelcomePage from '@/pages/WelcomePage.vue';
+import QuizPage from '@/pages/QuizPage.vue';
+import QuizNextPage from '@/pages/QuizNextPage.vue';
+import ResponsePage from '@/pages/Response.vue';
+
+const routes = [
+  { path: '/', component: WelcomePage },
+  { path: '/quiz', component: QuizPage },
+  { path: '/quiz/next', component: QuizNextPage }, 
+  { path: '/response', component: ResponsePage },
+];
+
 
 const router = createRouter({
-    history: createWebHistory('/wordpress-react/'), // MUST match `base`
-
+  history: createWebHistory("/wordpress-react/"),
   routes,
 });
 

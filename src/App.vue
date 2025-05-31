@@ -1,18 +1,21 @@
-<script setup lang="ts">
-import { Toaster } from "vue-sonner";
+<script setup>
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 </script>
 
+
 <template>
-  <div class="font-sans bg-gray-50 text-gray-900 min-h-screen">
-    <Toaster
-      :icons="{}"
-      position="top-center"
-      richColors
-      :toastOptions="{
-        style: { fontSize: '1.1rem' },
-        duration: 2000,
-      }"
-    />
-    <router-view />
+  <div class="flex flex-col min-h-dvh text-gray-800 font-sans bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100">
+    <Header class="fixed top-0 left-0 w-full z-50" />
+    
+    <main
+      class="flex-1 overflow-y-auto bg-gray-50 pt-[80px] pb-[30px]"
+    >
+      <!-- pt = header height, pb = footer height -->
+      <router-view />
+    </main>
+
+    <Footer class="fixed bottom-0 left-0 w-full z-50" />
   </div>
 </template>
+

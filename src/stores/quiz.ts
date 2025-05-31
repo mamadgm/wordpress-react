@@ -1,22 +1,31 @@
-export const batmanQuestions = [
-  {
-    id: 1,
-    question: 'Who played Batman in "The Dark Knight"?',
-    choices: ['Christian Bale', 'Ben Affleck', 'Michael Keaton', 'Val Kilmer'],
+// src/stores/quiz.ts
+import { defineStore } from "pinia";
+
+export const useQuizStore = defineStore("quiz", {
+  state: () => ({
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+    answers: {} as { [key: number]: string },
+    result_card: "",
+    final_card: "", // 👈 NEW
+  }),
+  actions: {
+    setUserInfo(first: string, last: string, phone: string) {
+      this.first_name = first;
+      this.last_name = last;
+      this.phone_number = phone;
+    },
+    setAnswer(id: number, answer: string) {
+      this.answers[id] = answer;
+    },
+    setResultCard(card: string) {
+      this.result_card = card;
+    },
+    questions: [] as any[], // instead of static list
+
+    setQuestions(qs: any[]) {
+      this.questions = qs;
+    },
   },
-  {
-    id: 2,
-    question: 'Who directed "The Batman" (2022)?',
-    choices: ['Christopher Nolan', 'Matt Reeves', 'Zack Snyder', 'Tim Burton'],
-  },
-  {
-    id: 3,
-    question: 'What is Batman’s real name?',
-    choices: ['Clark Kent', 'Peter Parker', 'Bruce Wayne', 'Tony Stark'],
-  },
-  {
-    id: 4,
-    question: 'What city does Batman protect?',
-    choices: ['Gotham', 'Metropolis', 'Star City', 'Central City'],
-  },
-];
+});

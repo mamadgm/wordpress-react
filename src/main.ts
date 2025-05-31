@@ -2,8 +2,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
-import 'vue3-form-wizard/dist/style.css';
-
 
 import './assets/main.css'
 
