@@ -3,6 +3,8 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useQuizStore } from '@/stores/quiz';
 import { pb } from '@/lib/pocketbase';
+import backUrl from "@/assets/svg/back.svg?url"; // This gives you the file path
+import Vector from "@/assets/svg/vector.svg";
 
 
 const router = useRouter();
@@ -28,39 +30,56 @@ function submitAnswer() {
 
 
 <template>
-  <div class="max-w-3xl mx-auto py-12 px-4 text-right" v-if="!loading">
-    <h2 class="text-2xl sm:text-4xl font-bold text-indigo-800 mb-10 leading-relaxed">
-      {{ question.text }}
-    </h2>
+  <div class="min-h-dvh w-screen flex flex-col items-center bg-[#17174A] overflow-hidden bg-no-repeat bg-cover"
+    :style="{ backgroundImage: `url(${backUrl})` }" v-if="!loading">
 
-    <div class="space-y-4">
-      <button
-        v-for="(choice, i) in question.choices"
-        :key="i"
-        @click="selected = i"
-        :class="[
-          'block w-full text-right px-6 py-4 rounded-xl border transition',
+
+    <div class="mt-64">
+      <h2 class="text-[16px] text-white text-right leading-relaxed">
+        سوال 1/3
+      </h2>
+      <h1 class="text-[18px] font-bold text-white text-right leading-relaxed max-w-72">
+        {{ question.text }}
+      </h1>
+    </div>
+
+
+
+    <div class="space-y-2 mt-8">
+      <button v-for="(choice, i) in question.choices" :key="i" @click="selected = i" :class="[
+        'flex items-center w-full text-right px-4 py-2 rounded-sm transition min-w-80 space-x-3 rtl:space-x-reverse',
+        'bg-[#263387] text-white', selected ===i ? 'border shadow-[0_0_4px_1px_#d6b5fc]' : ''
+      ]">
+        <!-- Dot -->
+        <span :class="[
+          'w-3 h-3 rounded-full inline-block',
           selected === i
-            ? 'bg-indigo-600 text-white border-indigo-700'
-            : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100',
-        ]"
-      >
-        {{ choice }}
+            ? 'bg-white shadow-[0_0_8px_2px_#d6b5fc]'
+            : 'border border-white bg-transparent'
+        ]"></span>
+
+        <!-- Text -->
+        <h5 class="max-w-64">
+          {{ choice }}
+        </h5>
       </button>
     </div>
 
-    <button
-      :disabled="selected === null"
-      @click="submitAnswer"
-      class="mt-10 w-full py-4 rounded-xl text-lg font-bold transition text-white"
+
+    <button :disabled="selected === null" @click="submitAnswer"
+      class="mt-10 w-32 py-4 rounded-xl text-lg font-bold transition text-white flex items-center justify-center"
       :class="[
         selected !== null
           ? 'bg-indigo-700 hover:bg-indigo-800'
           : 'bg-gray-400 cursor-not-allowed',
-      ]"
-    >
+      ]">
       ادامه
     </button>
+
+
+
+
+    <Vector class="absolute bottom-0 left-0"></Vector>
+
   </div>
 </template>
-

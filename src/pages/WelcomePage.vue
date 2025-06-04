@@ -2,6 +2,8 @@
 import { useRouter, useRoute } from "vue-router";
 import { useQuizStore } from "@/stores/quiz";
 import { ref } from "vue";
+import Home from "@/assets/svg/home.svg";
+import Snake from "@/assets/svg/snake.svg";
 
 const router = useRouter();
 const route = useRoute();
@@ -23,24 +25,32 @@ if (!first || !last || !phone) {
 </script>
 
 <template>
-  <div class="min-h-full flex items-center justify-center px-6 py-12">
-    <div class="bg-white shadow-2xl rounded-3xl p-8 sm:p-12 max-w-2xl w-full text-center space-y-8">
-      <h1 class="text-4xl sm:text-6xl font-extrabold text-indigo-700">سلام {{ first }} 👋</h1>
-      <p class="text-xl sm:text-2xl text-gray-700 font-medium">به آزمون هزارتو خوش اومدی!</p>
+  <div class="relative min-h-dvh  flex flex-col items-center justify-start bg-[#17174A] overflow-hidden">
 
-      <div class="text-right text-sm sm:text-base text-gray-600 border-t pt-6 space-y-2">
-        <p><span class="font-semibold text-gray-800">نام:</span> {{ first }}</p>
-        <p><span class="font-semibold text-gray-800">نام خانوادگی:</span> {{ last }}</p>
-        <p><span class="font-semibold text-gray-800">شماره موبایل:</span> {{ phone }}</p>
-      </div>
+    <!-- Top-left SVG -->
+    <Snake class="absolute scale-110 top-5 left-5"></Snake>
 
-      <router-link
-       v-if="error == false"
-        to="/quiz"
-        class="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition text-white font-bold text-xl sm:text-2xl px-10 py-5 rounded-full shadow-lg hover:shadow-2xl animate-bounce"
-      >
-        شروع آزمون 🚀
+    <!-- Bottom-left SVG -->
+    <Home class="absolute bottom-0 left-0"></Home>
+
+
+    <!-- Main Content -->
+    <div class="mt-32 z-10 ">
+      <h1 class="text-3xl font-bold text-white text-right leading-relaxed">
+        واقعاً تو نقشی هستی<br>
+        که بهت میاد؟
+      </h1>
+      <h2 class="text-xl text-[#d6b5fc] text-right leading-relaxed mt-2">
+        یه تست کوتاه کمکت می‌کنه نقش<br>
+        واقعیتو کشف کنی، شاید غافلگیر بشی.
+      </h2>
+      <router-link v-if="error == false" to="/quiz"
+        class="inline-block mt-4 bg-[#d6b5fc] text-[#17174A] font-bold text-xl px-8 py-1 rounded-lg shadow-lg hover:shadow-2xl animate-pulse">
+        شروع
       </router-link>
     </div>
+
+    <!-- Decorative Component -->
+
   </div>
 </template>
