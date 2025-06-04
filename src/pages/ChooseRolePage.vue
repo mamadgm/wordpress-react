@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { useQuizStore } from '@/stores/quiz';
+import { pb } from '@/lib/pocketbase';
+
+
 
 const router = useRouter();
 const quiz = useQuizStore();
 
-function selectRole(role: string) {
+async function selectRole(role: string) {
   quiz.setResultCard(role); // Save the selected one
 
   const payload = {
@@ -18,19 +21,16 @@ function selectRole(role: string) {
     chosen_card: role,
   };
 
-  fetch("https://apihezartoo.mammutepd.ir/gamification/api/collections/submissions/records", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  })
-    .then(() => {
-      router.push("/response");
-    })
-    .catch(() => {
-      alert("ارسال اطلاعات با خطا مواجه شد.");
-    });
+  try {
+    await pb.collection('submissions').create(payload);
+    router.push("/response");
+  } catch (error) {
+    alert("ارسال اطلاعات با خطا مواجه شد.");
+    console.error("PocketBase error:", error);
+  }
 }
 </script>
+
 
 <template>
   <div class="max-w-xl mx-auto py-12 px-4 text-center">

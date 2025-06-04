@@ -2,9 +2,9 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useQuizStore } from '@/stores/quiz';
-import PocketBase from 'pocketbase';
+import { pb } from '@/lib/pocketbase';
 
-const pb = new PocketBase('https://apihezartoo.mammutepd.ir/gamification');
+
 const router = useRouter();
 const quiz = useQuizStore();
 
