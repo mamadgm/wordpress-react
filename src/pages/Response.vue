@@ -3,7 +3,7 @@
 import { useQuizStore } from "@/stores/quiz";
 
 const quiz = useQuizStore();
-const card = quiz.result_card;
+const card = quiz.final_card;
 </script>
 <template>
   <div class="flex justify-center items-center min-h-[600px] px-4 bg-gray-50">

@@ -7,8 +7,9 @@ export const useQuizStore = defineStore("quiz", {
     last_name: "",
     phone_number: "",
     answers: {} as { [key: number]: string },
-    result_card: "",
-    final_card: "", // 👈 NEW
+    final_card: "",
+    resultOptions: [] as string[],
+    summary: [] as any[],
   }),
   actions: {
     setUserInfo(first: string, last: string, phone: string) {
@@ -19,13 +20,13 @@ export const useQuizStore = defineStore("quiz", {
     setAnswer(id: number, answer: string) {
       this.answers[id] = answer;
     },
-    setResultCard(card: string) {
-      this.result_card = card;
-    },
     questions: [] as any[], // instead of static list
 
     setQuestions(qs: any[]) {
       this.questions = qs;
+    },
+    setResultCard(role: string) {
+      this.final_card = role;
     },
   },
 });

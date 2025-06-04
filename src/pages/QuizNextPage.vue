@@ -23,7 +23,7 @@ function createQuestionsSummary() {
   return summary;
 }
 
-function determineFinalCard(atq_1: string, atq_2: string): string | null {
+function determineFinalCard(atq_1: string, atq_2: string): string {
   const map: Record<string, Record<string, string>> = {
     "1": {
       "1": "Marketing Analyst",
@@ -54,44 +54,23 @@ async function submitAnswer() {
   const atq_1 = quiz.answers[1];
   const atq_2 = quiz.answers[2];
   const summary = createQuestionsSummary();
-  const chosen_card = determineFinalCard(atq_1, atq_2);
 
-  quiz.setResultCard(chosen_card as string);
+  const option1 = determineFinalCard(atq_1, "1");
+  const option2 = determineFinalCard(atq_1, "2");
 
-  const payload = {
-    first_name: quiz.first_name,
-    last_name: quiz.last_name,
-    phone_number: quiz.phone_number,
-    atq_1,
-    atq_2,
-    summary,
-    chosen_card,
-  };
+  quiz.resultOptions = [option1, option2];
+  quiz.summary = summary;
 
-  try {
-    const res = await fetch("https:/netvana.ir/prj/hezartoo/api/collections/submissions/records", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    if (res.status === 409) {
-      alert("شما قبلاً ثبت‌نام کرده‌اید.");
-    } else if (!res.ok) {
-      throw new Error("Server error");
-    } else {
-      await res.json();
-      router.push("/response");
-    }
-  } catch {
-    alert("ارسال اطلاعات با خطا مواجه شد.");
-  }
+  router.push("/choose-role"); // 🎯 Redirect only — no API call here
 }
+
 </script>
 
 <template>
   <div class="max-w-3xl mx-auto py-12 px-4 text-right" v-if="question">
-    <h2 class="text-2xl sm:text-4xl font-bold text-indigo-800 mb-10 leading-relaxed">
+    <h2
+      class="text-2xl sm:text-4xl font-bold text-indigo-800 mb-10 leading-relaxed"
+    >
       {{ question.text }}
     </h2>
 

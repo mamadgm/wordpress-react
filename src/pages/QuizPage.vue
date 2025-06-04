@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { useQuizStore } from '@/stores/quiz';
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('https://netvana.ir/prj/hezartoo');
+const pb = new PocketBase('https://apihezartoo.mammutepd.ir/gamification');
 const router = useRouter();
 const quiz = useQuizStore();
 

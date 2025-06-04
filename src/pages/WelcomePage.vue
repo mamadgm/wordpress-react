@@ -1,18 +1,22 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from "vue-router";
 import { useQuizStore } from "@/stores/quiz";
+import { ref } from "vue";
 
 const router = useRouter();
 const route = useRoute();
 const quiz = useQuizStore();
+const error = ref(false);
+
 
 const first = (route.query.first_name as string) || "";
 const last = (route.query.last_name as string) || "";
 const phone = (route.query.phone_number as string) || "";
 
-if (!first || !last || !/^\d{11}$/.test(phone)) {
+if (!first || !last || !phone) {
   alert("آدرس نامعتبر است. لطفاً اطلاعات صحیح وارد کنید.");
   router.replace("/");
+  error.value = true;
 } else {
   quiz.setUserInfo(first, last, phone);
 }
@@ -31,6 +35,7 @@ if (!first || !last || !/^\d{11}$/.test(phone)) {
       </div>
 
       <router-link
+       v-if="error == false"
         to="/quiz"
         class="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition text-white font-bold text-xl sm:text-2xl px-10 py-5 rounded-full shadow-lg hover:shadow-2xl animate-bounce"
       >
