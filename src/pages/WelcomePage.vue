@@ -15,7 +15,7 @@ const last = (route.query.last_name as string) || "";
 const phone = (route.query.phone_number as string) || "";
 
 if (!phone) {
-  alert("آدرس نامعتبر است. لطفاً اطلاعات صحیح وارد کنید.");
+  alert("لطفاً اطلاعات صحیح وارد کنید");
   router.replace("/");
   error.value = true;
 } else {

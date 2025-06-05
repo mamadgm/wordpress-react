@@ -26,7 +26,7 @@ async function selectRole(role: string) {
     await pb.collection("submissions").create(payload);
     router.push("/response");
   } catch (error) {
-    alert("ارسال اطلاعات با خطا مواجه شد.");
+    alert("شما قبلا شرکت کرده اید");
     console.error("PocketBase error:", error);
   }
 }
@@ -37,7 +37,7 @@ async function selectRole(role: string) {
     class="min-h-dvh w-screen flex flex-col items-center bg-[#17174A] overflow-hidden bg-no-repeat bg-cover"
     :style="{ backgroundImage: `url(${backUrl})` }"
   >
-    <div class="mt-48">
+    <div class="mt-responsive">
       <h2 class="text-[16px] text-white text-right leading-5 font-pelaksemi">
         سوال 3/3
       </h2>

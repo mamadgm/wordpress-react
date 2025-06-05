@@ -34,7 +34,7 @@ function submitAnswer() {
     :style="{ backgroundImage: `url(${backUrl})` }"
     v-if="!loading"
   >
-    <div class="mt-48">
+    <div class="mt-responsive">
       <h2 class="text-[16px] text-white text-right leading-5 font-pelakmed">
         سوال 1/3
       </h2>
@@ -87,6 +87,6 @@ function submitAnswer() {
     </button>
 
     <Vector class="absolute bottom-0 left-0 z-0 pointer-events-none" />
-    <Logo class="absolute bottom-12 z-0 pointer-events-none"></Logo>
+    <Logo class="absolute bottom-[2vh] z-0 pointer-events-none"></Logo>
   </div>
 </template>

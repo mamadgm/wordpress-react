@@ -74,7 +74,7 @@ async function submitAnswer() {
     :style="{ backgroundImage: `url(${backUrl})` }"
     v-if="question"
   >
-    <div class="mt-48">
+    <div class="mt-responsive">
       <h2
         class="text-[16px] text-white text-right leading-6 max-w-72 font-pelakmed"
       >
