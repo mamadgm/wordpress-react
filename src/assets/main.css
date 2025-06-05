@@ -4,20 +4,17 @@
 
 
 @layer base {
-  /* Define kalame font */
   @font-face {
-    font-family: "kalame";
-    src: url("/font/office_fonts/Kalameh-Bold.ttf") format("truetype");
-    font-weight: bold;
-    font-style: normal;
+    font-family: "pelakmed";
+    src: url("/font/PelakFA-Medium.ttf") format("truetype");
   }
-
-  /* Define mikh font */
   @font-face {
-    font-family: "mikh";
-    src: url("/font/office_fonts/Mikhak-DS1-FD-Black.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
+    font-family: "pelaksemi";
+    src: url("/font/PelakFA-SemiBold.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "pelakbold";
+    src: url("/font/PelakFA-Bold.ttf") format("truetype");
   }
 
  

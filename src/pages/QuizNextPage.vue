@@ -2,6 +2,9 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useQuizStore } from "@/stores/quiz";
+import backUrl from "@/assets/svg/back.svg?url"; // This gives you the file path
+import Vector from "@/assets/svg/vector.svg";
+import Logo from "@/assets/svg/logo.svg"; // This gives you the file path
 
 const router = useRouter();
 const quiz = useQuizStore();
@@ -63,37 +66,58 @@ async function submitAnswer() {
 
   router.push("/choose-role"); // 🎯 Redirect only — no API call here
 }
-
 </script>
 
 <template>
-  <div class="max-w-3xl mx-auto py-12 px-4 text-right" v-if="question">
-    <h2
-      class="text-2xl sm:text-4xl font-bold text-indigo-800 mb-10 leading-relaxed"
-    >
-      {{ question.text }}
-    </h2>
-
-    <div class="space-y-4">
+  <div
+    class="min-h-dvh w-screen flex flex-col items-center bg-[#17174A] overflow-hidden bg-no-repeat bg-cover"
+    :style="{ backgroundImage: `url(${backUrl})` }"
+    v-if="question"
+  >
+    <div class="mt-48">
+      <h2
+        class="text-[16px] text-white text-right leading-6 max-w-72 font-pelakmed"
+      >
+        سوال 2/3
+      </h2>
+      <h1
+        class="text-[18px] font-bold text-white text-right leading-6 max-w-72 font-pelakbold"
+      >
+        {{ question.text }}
+      </h1>
+    </div>
+    <div class="space-y-2 mt-8">
       <button
         v-for="(choice, i) in question.choices"
         :key="i"
         @click="selected = i"
         :class="[
-          'block w-full text-right px-6 py-4 rounded-xl border transition',
-          selected === i
-            ? 'bg-indigo-600 text-white border-indigo-700'
-            : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100',
+          'flex items-center w-full text-right px-4 py-2 rounded-lg transition min-w-80 space-x-3 rtl:space-x-reverse',
+          'bg-[#263387] text-white',
+          selected === i ? 'border shadow-[0_0_4px_1px_#d6b5fc]' : '',
         ]"
       >
-        {{ choice }}
+        <!-- Dot -->
+        <span
+          :class="[
+            'w-3 h-3 rounded-full inline-block',
+            selected === i
+              ? 'bg-white shadow-[0_0_8px_2px_#d6b5fc]'
+              : 'border border-white bg-transparent',
+          ]"
+        ></span>
+
+        <!-- Text -->
+        <h5 class="max-w-64 leading-5 font-pelakmed">
+          {{ choice }}
+        </h5>
       </button>
     </div>
 
     <button
       :disabled="selected === null"
       @click="submitAnswer"
-      class="mt-10 w-full py-4 rounded-xl text-lg font-bold transition text-white"
+      class="mt-10 w-32 py-4 z-10 font-pelakbold rounded-xl text-lg font-bold transition text-white flex items-center justify-center"
       :class="[
         selected !== null
           ? 'bg-indigo-700 hover:bg-indigo-800'
@@ -102,5 +126,8 @@ async function submitAnswer() {
     >
       ادامه
     </button>
+
+    <Vector class="absolute bottom-0 left-0 z-0 pointer-events-none" />
+    <Logo class="absolute bottom-12 z-0 pointer-events-none"></Logo>
   </div>
 </template>

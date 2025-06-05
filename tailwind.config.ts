@@ -5,8 +5,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        mikh: ["mikh", "sans-serif"],
-        kalame: ["kalame", "sans-serif"],
+        pelakmed: ["pelakmed", "sans-serif"],
+        pelaksemi: ["pelaksemi", "sans-serif"],
+        pelakbold: ["pelakbold", "sans-serif"],
       },
     },
   },
