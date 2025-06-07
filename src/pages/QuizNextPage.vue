@@ -34,10 +34,10 @@ function determineFinalCard(atq_1: string, atq_2: string): string {
     },
     "2": {
       "1": "Content Marketer",
-      "2": "PR Manager",
+      "2": "PR Manager", //
     },
     "3": {
-      "1": "Graphic Designer",
+      "1": "Creative Director",
       "2": "Social Media Manager",
     },
     "4": {
