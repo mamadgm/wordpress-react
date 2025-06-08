@@ -72,13 +72,15 @@ async function submitSelection() {
     :style="{ backgroundImage: `url(${backUrl})` }"
   >
     <div class="mt-responsive">
-      <h2 class="text-[16px] text-white text-right leading-5 font-pelaksemi">
+      <h2 class="text-[16px] text-white text-right leading-5 font-pelakmed">
         سوال 3/3
       </h2>
-      <h1
-        class="text-[18px] font-bold text-white text-right leading-6 max-w-72 font-pelakbold mb-8"
-      >
-        یکی از نقش‌های پیشنهادی را انتخاب کنید
+      <h1 class="text-[18px] text-right leading-6 max-w-72 mb-8 text-[#f9d923]">
+        <span class="font-pelakbold"> وقت انتخابه! </span>
+        <br />
+        <span class="font-pelaksemi text-white">
+          کدوم نقش حسش برات آشناتره؟ توضیحات رو بخون و انتخابت رو بزن.
+        </span>
       </h1>
     </div>
 
@@ -107,7 +109,7 @@ async function submitSelection() {
     <button
       @click="submitSelection"
       :disabled="!selectedCardId"
-      class="absolute bottom-10 z-10 px-10 py-1 bg-white text-[#17174A] rounded-lg font-pelakbold text-lg transition hover:bg-gray-200 disabled:opacity-50"
+      class="absolute bottom-3 z-10 px-10 py-1 bg-white text-[#17174A] rounded-lg font-pelakbold text-lg transition hover:bg-gray-200 disabled:opacity-50"
     >
       تایید
     </button>

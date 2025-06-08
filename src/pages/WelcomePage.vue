@@ -42,17 +42,24 @@ if (!phone) {
 
     <!-- Main Content -->
     <div class="mt-20 z-10">
+      <h2 class="text-[18px] text-right leading-6 mt-2">
+        <span class="text-[#f9d923] font-pelakbold">
+          {{ first + " " + last + " " }}
+        </span>
+        <span class="text-[#d6b5fc] font-pelakmed">
+          بلیطت با موفقیت ثبت شد.
+        </span>
+      </h2>
+
       <h1
-        class="text-3xl font-bold text-white text-right leading-10 font-pelakbold"
+        class="text-3xl max-w-80 font-bold text-white text-right leading-10 font-pelakbold"
       >
-        واقعاً تو نقشی هستی<br />
-        که بهت میاد؟
+        حالا آماده‌ای فقط تو ۳۰ ثانیه بفهمی چقدر به دنیای بازاریابی نزدیکی؟
       </h1>
       <h2
         class="text-[18px] text-[#d6b5fc] text-right font-pelaksemi leading-6 mt-2"
       >
-        یه تست کوتاه کمکت می‌کنه نقش<br />
-        واقعیتو کشف کنی، شاید غافلگیر بشی.
+        دوتا سوال تا گرفتن جواب فاصله داری!
       </h2>
       <router-link
         v-if="error == false"

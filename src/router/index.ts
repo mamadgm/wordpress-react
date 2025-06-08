@@ -23,7 +23,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory("/wordpress-react/"),
+  history: createWebHistory("/"),
   routes,
 });
 

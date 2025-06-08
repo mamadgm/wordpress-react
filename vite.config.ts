@@ -13,5 +13,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/wordpress-react/", // ← update this to your actual repo name
+  base: "/", // ← update this to your actual repo name
 });

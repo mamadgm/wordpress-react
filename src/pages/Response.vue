@@ -51,10 +51,6 @@ async function downloadImage() {
     <div
       class="bg-slate-900 px-6 py-8 sm:px-10 sm:py-12 rounded-3xl shadow-xl border-2 text-center space-y-6 max-w-xl w-[90%] z-10"
     >
-      <h2 class="text-2xl text-white sm:text-3xl font-bold font-pelakbold z-10">
-        🎉 نتیجه شما
-      </h2>
-
       <div v-if="card" class="flex flex-col items-center space-y-4 z-10">
         <img
           :src="card.image"
@@ -71,11 +67,12 @@ async function downloadImage() {
         >
           📥 دریافت کارت
         </button>
-      </div>
 
-      <p class="text-base sm:text-lg text-white font-pelakmed z-10">
-        از شرکت شما متشکریم ❤️
+      </div>
+      <p class="text-xl sm:text-2xl font-pelakbold text-white">
+      به هزارتوی هفتم رسیدی، برای جستجو آماده‌ای؟
       </p>
+
     </div>
 
     <Vector class="absolute bottom-0 left-0 z-0 pointer-events-none" />
