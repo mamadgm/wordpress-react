@@ -4,6 +4,21 @@ import { useQuizStore } from "@/stores/quiz";
 import { ref } from "vue";
 import Home from "@/assets/png/castle.png";
 import Snake from "@/assets/svg/snake.svg";
+import { computed } from "vue";
+
+const displayFirst = computed(() => {
+  if (first && last) return first;
+  if (first) return first;
+  if (!first && last) return last;
+  return "کاربر";
+});
+
+const displayLast = computed(() => {
+  if (first && last) return last;
+  if (first && !last) return "عزیز";
+  if (!first && last) return "عزیز";
+  return "ناشناس";
+});
 
 const router = useRouter();
 const route = useRoute();
@@ -42,24 +57,24 @@ if (!phone) {
 
     <!-- Main Content -->
     <div class="mt-20 z-10">
-      <h2 class="text-[18px] text-right leading-6 mt-2">
+      <h2 class="text-[18px] text-right leading-6 mt-2 max-w-80">
         <span class="text-[#f9d923] font-pelakbold">
-          {{ first + " " + last + " " }}
+          {{ displayFirst + " " + displayLast + " " }}
         </span>
         <span class="text-[#d6b5fc] font-pelakmed">
-          بلیطت با موفقیت ثبت شد.
+          بلیط شما با موفقیت ثبت شد.
         </span>
       </h2>
 
       <h1
-        class="text-3xl max-w-80 font-bold text-white text-right leading-10 font-pelakbold"
+        class="text-[22px] max-w-80 font-bold text-white text-right leading-10 font-pelakbold"
       >
-        حالا آماده‌ای فقط تو ۳۰ ثانیه بفهمی چقدر به دنیای بازاریابی نزدیکی؟
+       آماده‌ای تو ۳۰ ثانیه بفهمی چقدر به دنیای بازاریابی نزدیکی؟
       </h1>
       <h2
         class="text-[18px] text-[#d6b5fc] text-right font-pelaksemi leading-6 mt-2"
       >
-        دوتا سوال تا گرفتن جواب فاصله داری!
+        فقط دو سوال تا گرفتن جواب فاصله داری!
       </h2>
       <router-link
         v-if="error == false"
